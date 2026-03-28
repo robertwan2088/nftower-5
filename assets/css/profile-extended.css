@@ -1,0 +1,961 @@
+/* ==================== 个人中心扩展样式 ==================== */
+
+/* ==================== 概览区域 ==================== */
+.overview-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.overview-card {
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.05) 0%, rgba(108, 92, 231, 0.02) 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(108, 92, 231, 0.1);
+    transition: all 0.3s ease;
+}
+
+.overview-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    border-color: var(--primary-color);
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: var(--gradient-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.card-content {
+    margin-top: 1rem;
+}
+
+.card-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.card-label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.card-change {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.card-change.positive {
+    color: var(--success-color);
+}
+
+.card-change.negative {
+    color: var(--danger-color);
+}
+
+/* ==================== 收益详情 ==================== */
+.earnings-details {
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+}
+
+.earnings-details h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.earnings-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.chart-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.chart-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow);
+}
+
+.chart-label {
+    flex: 1;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.chart-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.chart-bar {
+    width: 150px;
+    height: 8px;
+    background: var(--light-bg);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.chart-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--gradient-1);
+    border-radius: 4px;
+    transition: width 1s ease;
+}
+
+/* ==================== 最近活动 ==================== */
+.recent-activity {
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+}
+
+.recent-activity h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.activity-list .activity-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.activity-list .activity-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow);
+}
+
+.activity-list .activity-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+}
+
+.activity-list .activity-icon.buy {
+    background: var(--gradient-1);
+}
+
+.activity-list .activity-icon.sell {
+    background: var(--gradient-3);
+}
+
+.activity-list .activity-icon.favorite {
+    background: var(--gradient-2);
+}
+
+.activity-list .activity-icon.staking {
+    background: var(--gradient-4);
+}
+
+.activity-list .activity-icon.offer {
+    background: var(--gradient-5);
+}
+
+.activity-list .activity-icon.transfer {
+    background: var(--gradient-6);
+}
+
+.activity-details {
+    flex: 1;
+}
+
+.activity-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.activity-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.activity-time {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.btn-view-more {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-view-more:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* ==================== 收藏网格 ==================== */
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.collection-item {
+    background: #f8f9fa;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.collection-item:hover {
+    background: white;
+    box-shadow: var(--shadow);
+    transform: translateY(-5px);
+}
+
+.collection-preview {
+    height: 180px;
+    background: var(--gradient-1);
+    position: relative;
+}
+
+.collection-info {
+    padding: 1.5rem;
+}
+
+.collection-info h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.collection-info p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.collection-stats {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.collection-stats span {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* ==================== 收藏夹网格 ==================== */
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.favorites-grid .nft-card {
+    background: #f8f9fa;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.favorites-grid .nft-card:hover {
+    background: white;
+    box-shadow: var(--shadow);
+    transform: translateY(-5px);
+}
+
+.favorites-grid .nft-image {
+    position: relative;
+    height: 280px;
+}
+
+.favorites-grid .nft-creator img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.favorites-grid .nft-price {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--success-color);
+}
+
+.btn-remove-favorite {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    color: var(--danger-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    z-index: 2;
+}
+
+.btn-remove-favorite:hover {
+    background: var(--danger-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+/* ==================== 出价列表 ==================== */
+.offers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.offer-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.offer-item:hover {
+    background: white;
+    box-shadow: var(--shadow);
+    transform: translateX(5px);
+}
+
+.offer-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.offer-details {
+    flex: 1;
+}
+
+.offer-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.offer-info {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.offer-price {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.offer-creator {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.offer-status {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.offer-status.pending {
+    color: var(--warning-color);
+}
+
+.offer-status.rejected {
+    color: var(--danger-color);
+}
+
+.offer-time {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.offer-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* ==================== 收益详情 ==================== */
+.earnings-summary {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.summary-card {
+    flex: 1;
+    background: linear-gradient(135deg, rgba(0, 184, 148, 0.1) 0%, rgba(0, 184, 148, 0.05) 100%);
+    border: 1px solid rgba(0, 184, 148, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.summary-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: var(--success-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.summary-title {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.summary-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--success-color);
+}
+
+/* ==================== 质押摘要 ==================== */
+.staking-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.staking-summary .summary-card {
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(108, 92, 231, 0.05) 100%);
+    border: 1px solid rgba(108, 92, 231, 0.2);
+}
+
+.staking-summary .summary-icon {
+    background: var(--primary-color);
+}
+
+.staking-summary .summary-value {
+    color: var(--primary-color);
+}
+
+/* ==================== 设置列表 ==================== */
+.settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.setting-item:hover {
+    background: white;
+    box-shadow: var(--shadow);
+}
+
+.setting-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.setting-info {
+    flex: 1;
+}
+
+.setting-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.setting-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+.setting-toggle {
+    width: 50px;
+    height: 26px;
+    background: white;
+    border-radius: 13px;
+    position: relative;
+    cursor: pointer;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.setting-toggle::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: var(--border-color);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.setting-toggle.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.setting-toggle.active::after {
+    left: calc(100% - 22px);
+    background: white;
+}
+
+/* ==================== 安全设置 ==================== */
+.security-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.security-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.security-item:hover {
+    background: white;
+    box-shadow: var(--shadow);
+}
+
+.security-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.25rem;
+}
+
+.security-content {
+    flex: 1;
+}
+
+.security-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.security-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.security-status {
+    margin-bottom: 1rem;
+}
+
+.security-status .status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.security-status .status.enabled {
+    background: rgba(0, 184, 148, 0.1);
+    color: var(--success-color);
+}
+
+/* ==================== 通知设置 ==================== */
+.notifications-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.notification-category {
+    margin-bottom: 2rem;
+}
+
+.notification-category h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.notification-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.notification-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow);
+}
+
+.notification-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.notification-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.notification-time {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* ==================== 隐私设置 ==================== */
+.privacy-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.privacy-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.privacy-item:hover {
+    background: white;
+    box-shadow: var(--shadow);
+}
+
+.privacy-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+}
+
+.privacy-content {
+    flex: 1;
+}
+
+.privacy-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.privacy-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.privacy-toggle {
+    flex-shrink: 0;
+}
+
+/* ==================== 表格样式 ==================== */
+.activity-table {
+    background: #f8f9fa;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.activity-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.activity-table th,
+.activity-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+}
+
+.activity-table th {
+    background: white;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--light-bg);
+}
+
+.activity-table td {
+    border-bottom: 1px solid var(--light-bg);
+}
+
+.activity-table tr:hover {
+    background: white;
+}
+
+.earnings-table {
+    background: #f8f9fa;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.earnings-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.earnings-table th,
+.earnings-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+}
+
+.earnings-table th {
+    background: white;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--light-bg);
+}
+
+.earnings-table td {
+    border-bottom: 1px solid var(--light-bg);
+}
+
+.earnings-table tr:hover {
+    background: white;
+}
+
+/* ==================== 分页 ==================== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 3rem;
+}
+
+.page-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    background: white;
+    border: 1px solid var(--border-color);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.page-btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-ellipsis {
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+/* ==================== 按钮样式 ==================== */
+.btn-primary.modal-btn,
+.btn-secondary.modal-btn,
+.btn-action-sm,
+.btn-view-more {
+    transition: all 0.3s ease;
+}
+
+.btn-primary.modal-btn:active,
+.btn-secondary.modal-btn:active,
+.btn-action-sm:active,
+.btn-view-more:active {
+    transform: scale(0.98);
+}
+
+/* ==================== 响应式设计 ==================== */
+@media (max-width: 1024px) {
+    .overview-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .earnings-summary {
+        flex-direction: column;
+    }
+
+    .earnings-summary .summary-card {
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .overview-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .earnings-summary {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .earnings-summary .summary-card {
+        min-width: 150px;
+    }
+
+    .activity-table,
+    .earnings-table {
+        overflow-x: auto;
+    }
+
+    .activity-table table,
+    .earnings-table table {
+        min-width: 600px;
+    }
+
+    .settings-list,
+    .security-settings,
+    .privacy-settings,
+    .notifications-settings {
+        overflow-y: auto;
+        max-height: 400px;
+    }
+}

@@ -1,0 +1,714 @@
+/* ==================== 资产中心样式 ==================== */
+
+.assets-main {
+    padding-top: 120px;
+    min-height: calc(100vh - 200px);
+    background: #f8f9fa;
+}
+
+/* ==================== 概览区域 ==================== */
+.overview-section {
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.05) 0%, rgba(108, 92, 231, 0.02) 100%);
+}
+
+.overview-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.welcome-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--primary-color);
+}
+
+.welcome-card h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.welcome-card p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.total-value {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.total-value .value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.total-value .change {
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.total-value .change.positive {
+    background: rgba(0, 184, 148, 0.1);
+    color: var(--success-color);
+}
+
+.total-value .change.negative {
+    background: rgba(255, 118, 117, 0.1);
+    color: var(--danger-color);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.stat-icon.nft {
+    background: var(--gradient-1);
+}
+
+.stat-icon.staking {
+    background: var(--gradient-2);
+}
+
+.stat-icon.earnings {
+    background: var(--gradient-3);
+}
+
+.stat-icon.transactions {
+    background: var(--gradient-4);
+}
+
+.stat-info .stat-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.stat-info .stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* ==================== 资产内容区域 ==================== */
+.assets-content {
+    padding: 0 2rem 3rem;
+}
+
+.assets-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+/* ==================== 资产导航 ==================== */
+.assets-nav {
+    display: flex;
+    border-bottom: 2px solid var(--light-bg);
+    padding: 0 1rem;
+}
+
+.assets-nav-btn {
+    flex: 1;
+    padding: 1.25rem 1.5rem;
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-bottom: 3px solid transparent;
+}
+
+.assets-nav-btn:hover {
+    color: var(--primary-color);
+    background: rgba(108, 92, 231, 0.05);
+}
+
+.assets-nav-btn.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.assets-nav-btn i {
+    font-size: 1.1rem;
+}
+
+/* ==================== 资产标签页 ==================== */
+.assets-tab {
+    display: none;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.assets-tab.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--light-bg);
+}
+
+.tab-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.tab-actions,
+.tab-filters {
+    display: flex;
+    gap: 1rem;
+}
+
+.sort-select,
+.filter-select {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sort-select:focus,
+.filter-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* ==================== 资产网格 ==================== */
+.assets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.asset-card {
+    background: #f8f9fa;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.asset-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    background: white;
+}
+
+.asset-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.asset-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+    z-index: 2;
+}
+
+.asset-badge.staking {
+    background: var(--warning-color);
+}
+
+.asset-badge.rare {
+    background: var(--accent-color);
+}
+
+.asset-info {
+    padding: 1.5rem;
+}
+
+.asset-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.asset-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detail-item i {
+    color: var(--primary-color);
+}
+
+.asset-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-action-sm {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    background: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-action-sm:hover:not(:disabled) {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-action-sm:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+.btn-action-sm.danger:hover {
+    background: var(--danger-color);
+    border-color: var(--danger-color);
+    color: white;
+}
+
+/* ==================== 质押池 ==================== */
+.staking-pools {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.staking-pool {
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.staking-pool:hover {
+    background: white;
+    box-shadow: var(--shadow);
+    transform: translateX(5px);
+}
+
+.pool-info {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.pool-name {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 250px;
+}
+
+.pool-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+}
+
+.pool-name h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.pool-name p {
+    font-size: 0.9rem;
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+.pool-stats {
+    flex: 1;
+    display: flex;
+    gap: 2rem;
+}
+
+.pool-stat {
+    text-align: center;
+}
+
+.pool-stat .label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.pool-stat .value {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.pool-stat .value.positive {
+    color: var(--success-color);
+}
+
+.pool-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    border-top: 2px solid var(--light-bg);
+}
+
+/* ==================== 收益列表 ==================== */
+.earnings-summary {
+    display: flex;
+    gap: 2rem;
+}
+
+.summary-item {
+    text-align: center;
+}
+
+.summary-item .label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.summary-item .value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.summary-item .value.positive {
+    color: var(--success-color);
+}
+
+.earnings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.earning-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.earning-item:hover {
+    background: white;
+    box-shadow: var(--shadow);
+    transform: translateX(5px);
+}
+
+.earning-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: var(--gradient-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+}
+
+.earning-details {
+    flex: 1;
+}
+
+.earning-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.earning-time {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.earning-amount {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.earning-amount.positive {
+    color: var(--success-color);
+}
+
+.earning-amount.negative {
+    color: var(--danger-color);
+}
+
+/* ==================== 交易记录 ==================== */
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.history-item:hover {
+    background: white;
+    box-shadow: var(--shadow);
+    transform: translateX(5px);
+}
+
+.history-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+}
+
+.history-icon.buy {
+    background: var(--gradient-1);
+}
+
+.history-icon.sell {
+    background: var(--gradient-3);
+}
+
+.history-icon.transfer {
+    background: var(--gradient-2);
+}
+
+.history-details {
+    flex: 1;
+}
+
+.history-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.history-time {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.history-amount {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.history-amount.positive {
+    color: var(--success-color);
+}
+
+.history-status {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.history-status.completed {
+    background: rgba(0, 184, 148, 0.1);
+    color: var(--success-color);
+}
+
+/* ==================== 响应式设计 ==================== */
+@media (max-width: 1024px) {
+    .pool-info {
+        flex-direction: column;
+    }
+
+    .pool-name {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .pool-stats {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .pool-stat {
+        flex: 1;
+        min-width: 120px;
+    }
+
+    .earnings-summary {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .summary-item {
+        flex: 1;
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .assets-nav {
+        flex-direction: column;
+    }
+
+    .assets-nav-btn {
+        border-bottom: none;
+        border-left: 3px solid transparent;
+        justify-content: flex-start;
+    }
+
+    .assets-nav-btn.active {
+        border-bottom: none;
+        border-left-color: var(--primary-color);
+    }
+
+    .tab-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .tab-actions,
+    .tab-filters {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .sort-select,
+    .filter-select {
+        width: 100%;
+    }
+
+    .assets-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .history-item,
+    .earning-item {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ==================== 按钮样式 ==================== */
+.btn-primary {
+    padding: 0.75rem 1.5rem;
+    background: var(--gradient-1);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+}

@@ -1,0 +1,752 @@
+/* ==================== 预约页面样式 ==================== */
+
+.reserve-main {
+    padding-top: 120px;
+    min-height: calc(100vh - 200px);
+    background: #f8f9fa;
+}
+
+/* ==================== 预约统计 ==================== */
+.reserve-stats {
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.05) 0%, rgba(108, 92, 231, 0.02) 100%);
+}
+
+.stats-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.stat-icon.calendar {
+    background: var(--gradient-1);
+}
+
+.stat-icon.upcoming {
+    background: var(--gradient-2);
+}
+
+.stat-icon.completed {
+    background: var(--gradient-3);
+}
+
+.stat-icon.success-rate {
+    background: var(--gradient-4);
+}
+
+.stat-info .stat-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.stat-info .stat-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* ==================== 预约内容区域 ==================== */
+.reserve-content {
+    padding: 0 2rem 3rem;
+}
+
+.reserve-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+/* ==================== 预约导航 ==================== */
+.reserve-nav {
+    display: flex;
+    border-bottom: 2px solid var(--light-bg);
+    padding: 0 1rem;
+}
+
+.reserve-nav-btn {
+    flex: 1;
+    padding: 1.25rem 1.5rem;
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-bottom: 3px solid transparent;
+}
+
+.reserve-nav-btn:hover {
+    color: var(--primary-color);
+    background: rgba(108, 92, 231, 0.05);
+}
+
+.reserve-nav-btn.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.reserve-nav-btn i {
+    font-size: 1.1rem;
+}
+
+/* ==================== 预约标签页 ==================== */
+.reserve-tab {
+    display: none;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.reserve-tab.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--light-bg);
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.tab-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.tab-filters {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-select,
+.filter-input {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-select:focus,
+.filter-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.filter-input {
+    cursor: text;
+}
+
+/* ==================== 预约列表 ==================== */
+.reserve-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.reserve-item {
+    display: flex;
+    align-items: stretch;
+    gap: 2rem;
+    background: #f8f9fa;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.reserve-item:hover {
+    background: white;
+    box-shadow: var(--shadow);
+    transform: translateX(5px);
+}
+
+/* 时间显示 */
+.reserve-time {
+    background: var(--gradient-1);
+    color: white;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+}
+
+.time-hour {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.time-period {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    opacity: 0.9;
+}
+
+/* 预约详情 */
+.reserve-details {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.reserve-nft {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nft-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+}
+
+.nft-info .nft-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.nft-info .nft-series {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.reserve-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.meta-item i {
+    color: var(--primary-color);
+}
+
+/* 预约状态 */
+.reserve-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    min-width: 150px;
+    gap: 1rem;
+}
+
+.status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.reserve-status.confirmed .status-badge {
+    background: rgba(0, 184, 148, 0.1);
+    color: var(--success-color);
+}
+
+.reserve-status.pending .status-badge {
+    background: rgba(253, 203, 110, 0.1);
+    color: var(--warning-color);
+}
+
+.reserve-status.completed .status-badge {
+    background: rgba(108, 92, 231, 0.1);
+    color: var(--primary-color);
+}
+
+.reserve-status.cancelled .status-badge {
+    background: rgba(255, 118, 117, 0.1);
+    color: var(--danger-color);
+}
+
+/* ==================== 日期显示（我的预约） ==================== */
+.reserve-date {
+    background: var(--gradient-1);
+    color: white;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+}
+
+.date-day {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.date-month {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.reserve-details .reserve-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.reserve-details .reserve-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.reserve-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    padding: 0.4rem 0.8rem;
+    background: rgba(108, 92, 231, 0.1);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.reserve-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    justify-content: center;
+    padding: 1.5rem;
+    min-width: 150px;
+}
+
+/* ==================== 预约表单 ==================== */
+.reserve-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    color: var(--text-primary);
+    background: white;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.1);
+}
+
+.form-control::placeholder {
+    color: var(--text-secondary);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.nft-selector {
+    width: 100%;
+}
+
+.selected-nft {
+    width: 100%;
+    padding: 2rem;
+    border: 2px dashed var(--border-color);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.selected-nft:hover {
+    border-color: var(--primary-color);
+    background: rgba(108, 92, 231, 0.05);
+}
+
+.placeholder {
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.placeholder i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.placeholder span {
+    font-size: 1rem;
+}
+
+/* 提醒选项 */
+.reminder-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.checkbox-label input {
+    display: none;
+}
+
+.checkmark {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.checkmark::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: white;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease;
+}
+
+.checkbox-label input:checked + .checkmark {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.checkbox-label input:checked + .checkmark::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.checkbox-label:hover {
+    color: var(--primary-color);
+}
+
+/* 表单操作按钮 */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    padding-top: 2rem;
+    border-top: 2px solid var(--light-bg);
+}
+
+.btn-primary {
+    padding: 0.875rem 2rem;
+    background: var(--gradient-1);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+}
+
+.btn-secondary {
+    padding: 0.875rem 2rem;
+    background: white;
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* ==================== 历史记录 ==================== */
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.history-item:hover {
+    background: white;
+    box-shadow: var(--shadow);
+    transform: translateX(5px);
+}
+
+.history-date {
+    background: var(--gradient-1);
+    color: white;
+    padding: 1.5rem 1.25rem;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 120px;
+}
+
+.history-date .date {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.history-date .time {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.history-details {
+    flex: 1;
+}
+
+.history-details .history-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.history-details .history-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.history-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.history-status.completed {
+    background: rgba(0, 184, 148, 0.1);
+    color: var(--success-color);
+}
+
+.history-status.cancelled {
+    background: rgba(255, 118, 117, 0.1);
+    color: var(--danger-color);
+}
+
+/* ==================== 响应式设计 ==================== */
+@media (max-width: 1024px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .reserve-item {
+        flex-direction: column;
+    }
+
+    .reserve-time,
+    .reserve-date {
+        min-width: auto;
+        padding: 1rem;
+        width: 100%;
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .time-hour,
+    .date-day {
+        font-size: 1.5rem;
+    }
+
+    .reserve-status,
+    .reserve-actions {
+        flex-direction: row;
+        min-width: auto;
+        padding: 1rem;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .reserve-nav {
+        flex-direction: column;
+    }
+
+    .reserve-nav-btn {
+        border-bottom: none;
+        border-left: 3px solid transparent;
+        justify-content: flex-start;
+    }
+
+    .reserve-nav-btn.active {
+        border-bottom: none;
+        border-left-color: var(--primary-color);
+    }
+
+    .tab-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .tab-filters {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .filter-select,
+    .filter-input {
+        width: 100%;
+    }
+
+    .history-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .history-date {
+        width: 100%;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+}
+
+/* ==================== 按钮样式 ==================== */
+.btn-action-sm {
+    padding: 0.6rem 1.25rem;
+    background: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-action-sm:hover:not(:disabled) {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-action-sm.danger:hover {
+    background: var(--danger-color);
+    border-color: var(--danger-color);
+    color: white;
+}

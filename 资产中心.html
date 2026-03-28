@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资产中心 - NFTOwer-5 平台</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/assets.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html"><div class="logo">NFTOwer-5</div></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="market.html" class="nav-link">市场</a></li>
+                <li><a href="assets.html" class="nav-link active">资产中心</a></li>
+                <li><a href="stake.html" class="nav-link">质押</a></li>
+                <li><a href="reserve.html" class="nav-link">预约</a></li>
+                <li><a href="help.html" class="nav-link">帮助中心</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-connect">rob***@gmail.com</button>
+                <div class="user-avatar">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="用户头像">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 资产中心主内容 -->
+    <main class="assets-main">
+        <!-- 资产概览 -->
+        <section class="overview-section">
+            <div class="overview-container">
+                <div class="welcome-card">
+                    <h2>欢迎回来，Felix!</h2>
+                    <p>您的资产总价值</p>
+                    <div class="total-value">
+                        <span class="value">¥ 128,456.78</span>
+                        <span class="change positive">+12.5% <i class="fas fa-arrow-up"></i></span>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon nft">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">234</div>
+                            <div class="stat-label">NFT 藏品</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon staking">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">56</div>
+                            <div class="stat-label">质押中</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon earnings">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">¥ 23,456.78</div>
+                            <div class="stat-label">总收益</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon transactions">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">1,234</div>
+                            <div class="stat-label">交易次数</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 资产详情 -->
+        <section class="assets-content">
+            <div class="assets-container">
+                <!-- 资产导航 -->
+                <div class="assets-nav">
+                    <button class="assets-nav-btn active" data-tab="my-assets">
+                        <i class="fas fa-cube"></i>
+                        我的 NFT
+                    </button>
+                    <button class="assets-nav-btn" data-tab="staking">
+                        <i class="fas fa-lock"></i>
+                        质押
+                    </button>
+                    <button class="assets-nav-btn" data-tab="earnings">
+                        <i class="fas fa-coins"></i>
+                        收益
+                    </button>
+                    <button class="assets-nav-btn" data-tab="history">
+                        <i class="fas fa-history"></i>
+                        交易记录
+                    </button>
+                </div>
+
+                <!-- 我的 NFT -->
+                <div class="assets-tab active" id="tab-my-assets">
+                    <div class="tab-header">
+                        <h3>我的 NFT 藏品</h3>
+                        <div class="tab-actions">
+                            <select class="sort-select">
+                                <option value="recent">最新</option>
+                                <option value="price-high">价格高到低</option>
+                                <option value="price-low">价格低到高</option>
+                                <option value="name">名称</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="assets-grid">
+                        <div class="asset-card">
+                            <div class="asset-image">
+                                <div class="image-placeholder gradient-1"></div>
+                                <div class="asset-badge staking">质押中</div>
+                            </div>
+                            <div class="asset-info">
+                                <div class="asset-title">星际旅行者 #1024</div>
+                                <div class="asset-details">
+                                    <span class="detail-item">
+                                        <i class="fas fa-tag"></i>
+                                        购买价格: ¥ 2,340
+                                    </span>
+                                    <span class="detail-item">
+                                        <i class="fas fa-chart-line"></i>
+                                        当前价值: ¥ 2,890 (+23.5%)
+                                    </span>
+                                </div>
+                                <div class="asset-actions">
+                                    <button class="btn-action-sm">详情</button>
+                                    <button class="btn-action-sm">出售</button>
+                                    <button class="btn-action-sm" disabled>质押</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="asset-card">
+                            <div class="asset-image">
+                                <div class="image-placeholder gradient-2"></div>
+                            </div>
+                            <div class="asset-info">
+                                <div class="asset-title">赛博朋克城 #88</div>
+                                <div class="asset-details">
+                                    <span class="detail-item">
+                                        <i class="fas fa-tag"></i>
+                                        购买价格: ¥ 4,560
+                                    </span>
+                                    <span class="detail-item">
+                                        <i class="fas fa-chart-line"></i>
+                                        当前价值: ¥ 4,200 (-7.9%)
+                                    </span>
+                                </div>
+                                <div class="asset-actions">
+                                    <button class="btn-action-sm">详情</button>
+                                    <button class="btn-action-sm">出售</button>
+                                    <button class="btn-action-sm">质押</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="asset-card">
+                            <div class="asset-image">
+                                <div class="image-placeholder gradient-3"></div>
+                                <div class="asset-badge rare">稀有</div>
+                            </div>
+                            <div class="asset-info">
+                                <div class="asset-title">数字花园 #256</div>
+                                <div class="asset-details">
+                                    <span class="detail-item">
+                                        <i class="fas fa-tag"></i>
+                                        购买价格: ¥ 1,890
+                                    </span>
+                                    <span class="detail-item">
+                                        <i class="fas fa-chart-line"></i>
+                                        当前价值: ¥ 2,100 (+11.1%)
+                                    </span>
+                                </div>
+                                <div class="asset-actions">
+                                    <button class="btn-action-sm">详情</button>
+                                    <button class="btn-action-sm">出售</button>
+                                    <button class="btn-action-sm">质押</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 质押 -->
+                <div class="assets-tab" id="tab-staking">
+                    <div class="tab-header">
+                        <h3>质押池</h3>
+                        <button class="btn-primary">+ 新增质押</button>
+                    </div>
+                    <div class="staking-pools">
+                        <div class="staking-pool">
+                            <div class="pool-info">
+                                <div class="pool-name">
+                                    <div class="pool-icon gradient-1"></div>
+                                    <div>
+                                        <h4>星际旅行者池</h4>
+                                        <p>APY: 15.5%</p>
+                                    </div>
+                                </div>
+                                <div class="pool-stats">
+                                    <div class="pool-stat">
+                                        <span class="label">质押数量</span>
+                                        <span class="value">56</span>
+                                    </div>
+                                    <div class="pool-stat">
+                                        <span class="label">累计收益</span>
+                                        <span class="value positive">¥ 12,345.67</span>
+                                    </div>
+                                    <div class="pool-stat">
+                                        <span class="label">锁定期</span>
+                                        <span class="value">30天</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pool-actions">
+                                <button class="btn-action-sm">收益</button>
+                                <button class="btn-action-sm danger">取消质押</button>
+                            </div>
+                        </div>
+
+                        <div class="staking-pool">
+                            <div class="pool-info">
+                                <div class="pool-name">
+                                    <div class="pool-icon gradient-2"></div>
+                                    <div>
+                                        <h4>赛博朋克池</h4>
+                                        <p>APY: 12.8%</p>
+                                    </div>
+                                </div>
+                                <div class="pool-stats">
+                                    <div class="pool-stat">
+                                        <span class="label">质押数量</span>
+                                        <span class="value">32</span>
+                                    </div>
+                                    <div class="pool-stat">
+                                        <span class="label">累计收益</span>
+                                        <span class="value positive">¥ 8,765.43</span>
+                                    </div>
+                                    <div class="pool-stat">
+                                        <span class="label">锁定期</span>
+                                        <span class="value">90天</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pool-actions">
+                                <button class="btn-action-sm">收益</button>
+                                <button class="btn-action-sm danger">取消质押</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 收益 -->
+                <div class="assets-tab" id="tab-earnings">
+                    <div class="tab-header">
+                        <h3>收益记录</h3>
+                        <div class="earnings-summary">
+                            <div class="summary-item">
+                                <span class="label">今日收益</span>
+                                <span class="value positive">+¥ 234.56</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="label">本周收益</span>
+                                <span class="value positive">+¥ 1,234.56</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="label">本月收益</span>
+                                <span class="value positive">+¥ 5,678.90</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="earnings-list">
+                        <div class="earning-item">
+                            <div class="earning-icon">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div class="earning-details">
+                                <div class="earning-title">质押收益</div>
+                                <div class="earning-time">2026-03-27 14:30</div>
+                            </div>
+                            <div class="earning-amount positive">+¥ 123.45</div>
+                        </div>
+
+                        <div class="earning-item">
+                            <div class="earning-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="earning-details">
+                                <div class="earning-title">出售 NFT</div>
+                                <div class="earning-time">2026-03-27 10:15</div>
+                            </div>
+                            <div class="earning-amount positive">+¥ 2,890.00</div>
+                        </div>
+
+                        <div class="earning-item">
+                            <div class="earning-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="earning-details">
+                                <div class="earning-title">购买 NFT</div>
+                                <div class="earning-time">2026-03-26 16:45</div>
+                            </div>
+                            <div class="earning-amount negative">-¥ 1,890.00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 交易记录 -->
+                <div class="assets-tab" id="tab-history">
+                    <div class="tab-header">
+                        <h3>交易记录</h3>
+                        <div class="tab-filters">
+                            <select class="filter-select">
+                                <option value="all">全部类型</option>
+                                <option value="buy">购买</option>
+                                <option value="sell">出售</option>
+                                <option value="transfer">转账</option>
+                            </select>
+                            <select class="filter-select">
+                                <option value="30days">最近30天</option>
+                                <option value="7days">最近7天</option>
+                                <option value="today">今天</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="history-list">
+                        <div class="history-item">
+                            <div class="history-icon buy">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="history-details">
+                                <div class="history-title">购买 NFT: 数字花园 #256</div>
+                                <div class="history-time">2026-03-27 12:30</div>
+                            </div>
+                            <div class="history-amount">-¥ 1,890.00</div>
+                            <div class="history-status completed">已完成</div>
+                        </div>
+
+                        <div class="history-item">
+                            <div class="history-icon sell">
+                                <i class="fas fa-tag"></i>
+                            </div>
+                            <div class="history-details">
+                                <div class="history-title">出售 NFT: 赛博朋克城 #88</div>
+                                <div class="history-time">2026-03-26 15:20</div>
+                            </div>
+                            <div class="history-amount positive">+¥ 4,200.00</div>
+                            <div class="history-status completed">已完成</div>
+                        </div>
+
+                        <div class="history-item">
+                            <div class="history-icon transfer">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="history-details">
+                                <div class="history-title">转账: 星际旅行者 #1024</div>
+                                <div class="history-time">2026-03-25 09:45</div>
+                            </div>
+                            <div class="history-amount">--</div>
+                            <div class="history-status completed">已完成</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <div class="logo">NFTOwer-5</div>
+                    <p>探索无限可能，收藏独特价值</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>市场</h4>
+                <ul>
+                    <li><a href="#">浏览 NFT</a></li>
+                    <li><a href="#">创作者</a></li>
+                    <li><a href="#">收藏</a></li>
+                    <li><a href="#">活动</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>资源</h4>
+                <ul>
+                    <li><a href="#">帮助中心</a></li>
+                    <li><a href="#">API 文档</a></li>
+                    <li><a href="#">教程</a></li>
+                    <li><a href="#">博客</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>公司</h4>
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NFTOwer-5. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/assets.js"></script>
+</body>
+</html>

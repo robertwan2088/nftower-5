@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>市场 - NFTOwer-5 平台</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/market.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html"><div class="logo">NFTOwer-5</div></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="market.html" class="nav-link active">市场</a></li>
+                <li><a href="assets.html" class="nav-link">资产中心</a></li>
+                <li><a href="stake.html" class="nav-link">质押</a></li>
+                <li><a href="reserve.html" class="nav-link">预约</a></li>
+                <li><a href="help.html" class="nav-link">帮助中心</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-connect">rob***@gmail.com</button>
+                <div class="user-avatar">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="用户头像">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 市场主内容 -->
+    <main class="market-main">
+        <!-- 搜索和筛选 -->
+        <section class="market-header">
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="搜索 NFT、创作者、系列..." id="searchInput">
+                </div>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid" title="网格视图">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button class="view-btn" data-view="list" title="列表视图">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <button class="filter-btn" data-filter="all">
+                        <i class="fas fa-cubes"></i>
+                        全部
+                        <span class="count">12,458</span>
+                    </button>
+                    <button class="filter-btn" data-filter="art">
+                        <i class="fas fa-palette"></i>
+                        艺术品
+                        <span class="count">4,234</span>
+                    </button>
+                    <button class="filter-btn" data-filter="gaming">
+                        <i class="fas fa-gamepad"></i>
+                        游戏
+                        <span class="count">3,456</span>
+                    </button>
+                    <button class="filter-btn" data-filter="collectible">
+                        <i class="fas fa-gem"></i>
+                        收藏品
+                        <span class="count">2,789</span>
+                    </button>
+                    <button class="filter-btn" data-filter="music">
+                        <i class="fas fa-music"></i>
+                        音乐
+                        <span class="count">1,234</span>
+                    </button>
+                </div>
+
+                <div class="sort-group">
+                    <button class="sort-btn" data-sort="recent">
+                        <i class="fas fa-clock"></i>
+                        最新
+                    </button>
+                    <button class="sort-btn active" data-sort="popular">
+                        <i class="fas fa-fire"></i>
+                        热门
+                    </button>
+                    <button class="sort-btn" data-sort="price-low">
+                        <i class="fas fa-sort-amount-down"></i>
+                        价格低到高
+                    </button>
+                    <button class="sort-btn" data-sort="price-high">
+                        <i class="fas fa-sort-amount-up"></i>
+                        价格高到低
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 侧边栏筛选 -->
+        <section class="market-content">
+            <aside class="sidebar">
+                <div class="filter-section">
+                    <h3><i class="fas fa-sliders-h"></i> 筛选条件</h3>
+
+                    <!-- 价格范围 -->
+                    <div class="filter-item">
+                        <h4>价格范围</h4>
+                        <div class="price-range">
+                            <input type="number" placeholder="最低价" min="0" class="price-input" id="minPrice">
+                            <span>-</span>
+                            <input type="number" placeholder="最高价" min="0" class="price-input" id="maxPrice">
+                        </div>
+                        <input type="range" class="price-slider" id="priceSlider" min="0" max="10000" value="5000">
+                    </div>
+
+                    <!-- 状态 -->
+                    <div class="filter-item">
+                        <h4>状态</h4>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="status" value="on-sale" checked>
+                                <span class="checkmark"></span>
+                                在售
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="status" value="new">
+                                <span class="checkmark"></span>
+                                新品
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="status" value="rare">
+                                <span class="checkmark"></span>
+                                稀有
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 创作者 -->
+                    <div class="filter-item">
+                        <h4>创作者</h4>
+                        <div class="creator-list">
+                            <label class="creator-label">
+                                <input type="checkbox" name="creator" value="verified" checked>
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Verified" alt="">
+                                <span>已验证</span>
+                                <span class="creator-count">234</span>
+                            </label>
+                            <label class="creator-label">
+                                <input type="checkbox" name="creator" value="popular">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Popular" alt="">
+                                <span>热门创作者</span>
+                                <span class="creator-count">156</span>
+                            </label>
+                            <label class="creator-label">
+                                <input type="checkbox" name="creator" value="newbie">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Newbie" alt="">
+                                <span>新星</span>
+                                <span class="creator-count">89</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 区块链 -->
+                    <div class="filter-item">
+                        <h4>区块链</h4>
+                        <div class="chain-list">
+                            <label class="chain-label">
+                                <input type="checkbox" name="chain" value="ethereum" checked>
+                                <span class="chain-icon eth"></span>
+                                <span>Ethereum</span>
+                            </label>
+                            <label class="chain-label">
+                                <input type="checkbox" name="chain" value="polygon">
+                                <span class="chain-icon polygon"></span>
+                                <span>Polygon</span>
+                            </label>
+                            <label class="chain-label">
+                                <input type="checkbox" name="chain" value="bsc">
+                                <span class="chain-icon bsc"></span>
+                                <span>BSC</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="btn-apply-filters">应用筛选</button>
+                    <button class="btn-reset-filters">重置</button>
+                </div>
+            </aside>
+
+            <!-- NFT 列表 -->
+            <div class="nft-container">
+                <div class="results-info">
+                    <span class="results-count">显示 1-12 / 共 12,458 个结果</span>
+                    <button class="btn-filters-toggle">
+                        <i class="fas fa-filter"></i>
+                        筛选
+                    </button>
+                </div>
+
+                <div class="nft-grid" id="nftGrid">
+                    <!-- NFT 卡片 1 -->
+                    <div class="nft-card" data-category="art" data-price="2340" data-status="on-sale" data-creator="verified" data-chain="ethereum">
+                        <div class="nft-badge new">新品</div>
+                        <div class="nft-image">
+                            <div class="image-placeholder gradient-1"></div>
+                            <div class="nft-overlay">
+                                <button class="btn-overlay">立即购买</button>
+                            </div>
+                            <button class="btn-favorite"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="nft-info">
+                            <div class="nft-title">星际旅行者 #1024</div>
+                            <div class="nft-creator">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ArtMaster" alt="">
+                                <span>ArtMaster</span>
+                                <i class="fas fa-check-circle verified"></i>
+                            </div>
+                            <div class="nft-price">
+                                <div>
+                                    <span class="price-label">当前价格</span>
+                                    <span class="price-value">¥ 2,340</span>
+                                </div>
+                                <div class="nft-actions">
+                                    <button class="btn-action"><i class="fas fa-share-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NFT 卡片 2 -->
+                    <div class="nft-card" data-category="gaming" data-price="4560" data-status="rare" data-creator="popular" data-chain="ethereum">
+                        <div class="nft-badge rare">稀有</div>
+                        <div class="nft-image">
+                            <div class="image-placeholder gradient-2"></div>
+                            <div class="nft-overlay">
+                                <button class="btn-overlay">立即购买</button>
+                            </div>
+                            <button class="btn-favorite"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="nft-info">
+                            <div class="nft-title">赛博朋克城 #88</div>
+                            <div class="nft-creator">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=CyberArtist" alt="">
+                                <span>CyberArtist</span>
+                                <i class="fas fa-check-circle verified"></i>
+                            </div>
+                            <div class="nft-price">
+                                <div>
+                                    <span class="price-label">当前价格</span>
+                                    <span class="price-value">¥ 4,560</span>
+                                </div>
+                                <div class="nft-actions">
+                                    <button class="btn-action"><i class="fas fa-share-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NFT 卡片 3 -->
+                    <div class="nft-card" data-category="art" data-price="1890" data-status="on-sale" data-creator="verified" data-chain="polygon">
+                        <div class="nft-image">
+                            <div class="image-placeholder gradient-3"></div>
+                            <div class="nft-overlay">
+                                <button class="btn-overlay">立即购买</button>
+                            </div>
+                            <button class="btn-favorite"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="nft-info">
+                            <div class="nft-title">数字花园 #256</div>
+                            <div class="nft-creator">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=NatureLover" alt="">
+                                <span>NatureLover</span>
+                            </div>
+                            <div class="nft-price">
+                                <div>
+                                    <span class="price-label">当前价格</span>
+                                    <span class="price-value">¥ 1,890</span>
+                                </div>
+                                <div class="nft-actions">
+                                    <button class="btn-action"><i class="fas fa-share-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NFT 卡片 4 -->
+                    <div class="nft-card" data-category="collectible" data-price="3210" data-status="new" data-creator="popular" data-chain="ethereum">
+                        <div class="nft-badge hot">热门</div>
+                        <div class="nft-image">
+                            <div class="image-placeholder gradient-4"></div>
+                            <div class="nft-overlay">
+                                <button class="btn-overlay">立即购买</button>
+                            </div>
+                            <button class="btn-favorite"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="nft-info">
+                            <div class="nft-title">抽象空间 #512</div>
+                            <div class="nft-creator">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=AbstractX" alt="">
+                                <span>AbstractX</span>
+                                <i class="fas fa-check-circle verified"></i>
+                            </div>
+                            <div class="nft-price">
+                                <div>
+                                    <span class="price-label">当前价格</span>
+                                    <span class="price-value">¥ 3,210</span>
+                                </div>
+                                <div class="nft-actions">
+                                    <button class="btn-action"><i class="fas fa-share-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NFT 卡片 5 -->
+                    <div class="nft-card" data-category="gaming" data-price="5430" data-status="rare" data-creator="verified" data-chain="bsc">
+                        <div class="nft-badge rare">稀有</div>
+                        <div class="nft-image">
+                            <div class="image-placeholder gradient-5"></div>
+                            <div class="nft-overlay">
+                                <button class="btn-overlay">立即购买</button>
+                            </div>
+                            <button class="btn-favorite"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="nft-info">
+                            <div class="nft-title">未来战士 #999</div>
+                            <div class="nft-creator">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=WarriorX" alt="">
+                                <span>WarriorX</span>
+                                <i class="fas fa-check-circle verified"></i>
+                            </div>
+                            <div class="nft-price">
+                                <div>
+                                    <span class="price-label">当前价格</span>
+                                    <span class="price-value">¥ 5,430</span>
+                                </div>
+                                <div class="nft-actions">
+                                    <button class="btn-action"><i class="fas fa-share-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NFT 卡片 6 -->
+                    <div class="nft-card" data-category="music" data-price="2890" data-status="on-sale" data-creator="newbie" data-chain="ethereum">
+                        <div class="nft-image">
+                            <div class="image-placeholder gradient-6"></div>
+                            <div class="nft-overlay">
+                                <button class="btn-overlay">立即购买</button>
+                            </div>
+                            <button class="btn-favorite"><i class="far fa-heart"></i></button>
+                        </div>
+                        <div class="nft-info">
+                            <div class="nft-title">神话生物 #333</div>
+                            <div class="nft-creator">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=MythMaker" alt="">
+                                <span>MythMaker</span>
+                            </div>
+                            <div class="nft-price">
+                                <div>
+                                    <span class="price-label">当前价格</span>
+                                    <span class="price-value">¥ 2,890</span>
+                                </div>
+                                <div class="nft-actions">
+                                    <button class="btn-action"><i class="fas fa-share-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 分页 -->
+                <div class="pagination">
+                    <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <span class="page-ellipsis">...</span>
+                    <button class="page-btn">99</button>
+                    <button class="page-btn">100</button>
+                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <div class="logo">NFTOwer-5</div>
+                    <p>探索无限可能，收藏独特价值</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>市场</h4>
+                <ul>
+                    <li><a href="#">浏览 NFT</a></li>
+                    <li><a href="#">创作者</a></li>
+                    <li><a href="#">收藏</a></li>
+                    <li><a href="#">活动</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>资源</h4>
+                <ul>
+                    <li><a href="#">帮助中心</a></li>
+                    <li><a href="#">API 文档</a></li>
+                    <li><a href="#">教程</a></li>
+                    <li><a href="#">博客</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>公司</h4>
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NFTOwer-5. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/market.js"></script>
+</body>
+</html>

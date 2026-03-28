@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - NFTOwer-5 平台</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/profile.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html"><div class="logo">NFTOwer-5</div></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="market.html" class="nav-link">市场</a></li>
+                <li><a href="assets.html" class="nav-link">资产中心</a></li>
+                <li><a href="stake.html" class="nav-link">质押</a></li>
+                <li><a href="reserve.html" class="nav-link">预约</a></li>
+                <li><a href="help.html" class="nav-link">帮助中心</a></li>
+                <li><a href="profile.html" class="nav-link active">个人中心</a></li>
+            </ul>
+            <div class="nav-actions" id="navActions">
+                <!-- 未登录状态 -->
+                <div class="auth-buttons" id="authButtons">
+                    <button class="btn-login" onclick="openLoginModal()">登录</button>
+                    <button class="btn-register" onclick="openRegisterModal()">注册</button>
+                </div>
+                <!-- 已登录状态 -->
+                <div class="user-profile-display" id="userProfileDisplay" style="display: none;">
+                    <div class="user-email-display" id="userEmail">rob***@gmail.com</div>
+                    <div class="user-avatar" id="userAvatar">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Rob" alt="用户头像">
+                    </div>
+                    <i class="fas fa-chevron-down dropdown-toggle"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 用户下拉菜单 -->
+        <div class="user-dropdown" id="userDropdown">
+            <div class="user-dropdown-header">
+                <div class="user-dropdown-avatar">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Rob" alt="用户头像">
+                </div>
+                <div class="user-dropdown-info">
+                    <h4>Robert</h4>
+                    <p>rob***@gmail.com</p>
+                    <div class="user-dropdown-badges">
+                        <span class="badge-mini verified"><i class="fas fa-check"></i> 已认证</span>
+                        <span class="badge-mini premium"><i class="fas fa-crown"></i> 高级会员</span>
+                    </div>
+                </div>
+            </div>
+            <div class="user-dropdown-actions">
+                <button class="user-dropdown-action" onclick="location.href='profile.html'">
+                    <i class="fas fa-user"></i> 个人中心
+                </button>
+                <button class="user-dropdown-action" onclick="location.href='assets.html'">
+                    <i class="fas fa-wallet"></i> 资产中心
+                </button>
+                <button class="user-dropdown-action" onclick="location.href='stake.html'">
+                    <i class="fas fa-lock"></i> 质押
+                </button>
+            </div>
+            <div class="user-dropdown-menu">
+                <a href="#overview" class="dropdown-menu-item" onclick="switchSection('overview')">
+                    <i class="fas fa-th-large"></i> 概览
+                </a>
+                <a href="#collection" class="dropdown-menu-item" onclick="switchSection('collection')">
+                    <i class="fas fa-cube"></i> 我的收藏
+                </a>
+                <a href="#favorites" class="dropdown-menu-item" onclick="switchSection('favorites')">
+                    <i class="fas fa-heart"></i> 收藏夹
+                </a>
+                <a href="#activity" class="dropdown-menu-item" onclick="switchSection('activity')">
+                    <i class="fas fa-history"></i> 活动记录
+                </a>
+                <a href="#offers" class="dropdown-menu-item" onclick="switchSection('offers')">
+                    <i class="fas fa-gavel"></i> 出价管理
+                </a>
+                <a href="#earnings" class="dropdown-menu-item" onclick="switchSection('earnings')">
+                    <i class="fas fa-coins"></i> 收益
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#settings" class="dropdown-menu-item" onclick="switchSection('settings')">
+                    <i class="fas fa-cog"></i> 账户设置
+                </a>
+                <a href="#security" class="dropdown-menu-item" onclick="switchSection('security')">
+                    <i class="fas fa-shield-alt"></i> 安全设置
+                </a>
+                <a href="#notifications" class="dropdown-menu-item" onclick="switchSection('notifications')">
+                    <i class="fas fa-bell"></i> 通知设置
+                </a>
+                <a href="#privacy" class="dropdown-menu-item" onclick="switchSection('privacy')">
+                    <i class="fas fa-lock"></i> 隐私设置
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="help.html" class="dropdown-menu-item">
+                    <i class="fas fa-question-circle"></i> 帮助中心
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-menu-item danger" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> 退出登录
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 登录模态框 -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>登录</h2>
+                <button class="modal-close" onclick="closeModal('loginModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>邮箱地址</label>
+                        <input type="email" class="form-control" placeholder="请输入邮箱" required>
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" class="form-control" placeholder="请输入密码" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            记住我
+                        </label>
+                        <a href="#" class="forgot-password" onclick="handleForgotPassword()">忘记密码？</a>
+                    </div>
+                    <button type="submit" class="btn-primary modal-btn">登录</button>
+                </form>
+                <div class="modal-divider">
+                    <span>或</span>
+                </div>
+                <div class="social-login">
+                    <button class="social-btn google" onclick="socialLogin('Google')">
+                        <i class="fab fa-google"></i> Google 登录
+                    </button>
+                    <button class="social-btn github" onclick="socialLogin('GitHub')">
+                        <i class="fab fa-github"></i> GitHub 登录
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <p>还没有账号？ <a href="#" class="link-primary" onclick="closeModal('loginModal'); openRegisterModal()">立即注册</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 注册模态框 -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>注册</h2>
+                <button class="modal-close" onclick="closeModal('registerModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm" onsubmit="handleRegister(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>用户名</label>
+                            <input type="text" class="form-control" placeholder="请输入用户名" required>
+                        </div>
+                        <div class="form-group">
+                            <label>邮箱地址</label>
+                            <input type="email" class="form-control" placeholder="请输入邮箱" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" class="form-control" placeholder="至少 8 位字符" required>
+                    </div>
+                    <div class="form-group">
+                        <label>确认密码</label>
+                        <input type="password" class="form-control" placeholder="再次输入密码" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            我已阅读并同意 <a href="#" class="link-primary">服务条款</a> 和 <a href="#" class="link-primary">隐私政策</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary modal-btn">注册</button>
+                </form>
+                <div class="modal-footer">
+                    <p>已有账号？ <a href="#" class="link-primary" onclick="closeModal('registerModal'); openLoginModal()">立即登录</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 个人中心主内容 -->
+    <main class="profile-main">
+        <!-- 用户信息卡片 -->
+        <section class="profile-header">
+            <div class="profile-banner"></div>
+            <div class="profile-content">
+                <div class="profile-info">
+                    <div class="profile-avatar-container">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Rob" alt="用户头像" class="profile-avatar">
+                        <div class="avatar-badge verified"><i class="fas fa-check"></i></div>
+                        <button class="btn-edit-avatar"><i class="fas fa-camera"></i></button>
+                    </div>
+                    <div class="profile-details">
+                        <div class="profile-name-row">
+                            <h1 class="profile-name">Robert</h1>
+                            <div class="profile-badges">
+                                <span class="badge verified"><i class="fas fa-check-circle"></i> 已认证</span>
+                                <span class="badge premium"><i class="fas fa-crown"></i> 高级会员</span>
+                            </div>
+                        </div>
+                        <p class="profile-bio">NFT 爱好者 | 数字艺术收藏家 | 探索元宇宙</p>
+                        <div class="profile-stats">
+                            <div class="stat">
+                                <span class="stat-value">234</span>
+                                <span class="stat-label">NFT</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">1,234</span>
+                                <span class="stat-label">关注者</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">567</span>
+                                <span class="stat-label">关注</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">98.5%</span>
+                                <span class="stat-label">信誉度</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn-primary"><i class="fas fa-edit"></i> 编辑资料</button>
+                    <button class="btn-secondary"><i class="fas fa-share-alt"></i> 分享</button>
+                    <button class="btn-secondary danger"><i class="fas fa-sign-out-alt"></i> 退出登录</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 个人中心内容 -->
+        <section class="profile-content-section">
+            <div class="profile-container">
+                <!-- 侧边栏菜单 -->
+                <aside class="profile-sidebar">
+                    <nav class="profile-menu">
+                        <a href="#overview" class="profile-menu-item active" data-section="overview">
+                            <i class="fas fa-th-large"></i>
+                            概览
+                        </a>
+                        <a href="#collection" class="profile-menu-item" data-section="collection">
+                            <i class="fas fa-cube"></i>
+                            我的收藏
+                        </a>
+                        <a href="#favorites" class="profile-menu-item" data-section="favorites">
+                            <i class="fas fa-heart"></i>
+                            收藏夹
+                        </a>
+                        <a href="#activity" class="profile-menu-item" data-section="activity">
+                            <i class="fas fa-history"></i>
+                            活动记录
+                        </a>
+                        <a href="#offers" class="profile-menu-item" data-section="offers">
+                            <i class="fas fa-gavel"></i>
+                            出价管理
+                        </a>
+                        <a href="#earnings" class="profile-menu-item" data-section="earnings">
+                            <i class="fas fa-coins"></i>
+                            收益
+                        </a>
+                        <a href="#nfts" class="profile-menu-item" data-section="nfts">
+                            <i class="fas fa-cubes"></i>
+                            我的 NFT
+                        </a>
+                        <a href="#staking" class="profile-menu-item" data-section="staking">
+                            <i class="fas fa-lock"></i>
+                            质押
+                        </a>
+                        <div class="menu-divider"></div>
+                        <a href="#settings" class="profile-menu-item" data-section="settings">
+                            <i class="fas fa-cog"></i>
+                            账户设置
+                        </a>
+                        <a href="#security" class="profile-menu-item" data-section="security">
+                            <i class="fas fa-shield-alt"></i>
+                            安全设置
+                        </a>
+                        <a href="#notifications" class="profile-menu-item" data-section="notifications">
+                            <i class="fas fa-bell"></i>
+                            通知设置
+                        </a>
+                        <a href="#privacy" class="profile-menu-item" data-section="privacy">
+                            <i class="fas fa-lock"></i>
+                            隐私设置
+                        </a>
+                    </nav>
+
+                    <!-- 快速链接 -->
+                    <div class="quick-links">
+                        <h3>快速链接</h3>
+                        <a href="assets.html" class="quick-link">
+                            <i class="fas fa-wallet"></i>
+                            资产中心
+                        </a>
+                        <a href="market.html" class="quick-link">
+                            <i class="fas fa-shopping-cart"></i>
+                            前往市场
+                        </a>
+                        <a href="help.html" class="quick-link">
+                            <i class="fas fa-question-circle"></i>
+                            帮助中心
+                        </a>
+                    </div>
+                </aside>
+
+                <!-- 主内容区域 -->
+                <div class="profile-main-content">
+                    <!-- 概览 -->
+                    <div class="profile-section active" id="section-overview">
+                        <div class="section-header">
+                            <h2>概览</h2>
+                            <div class="section-actions">
+                                <select class="period-select" id="periodSelect">
+                                    <option value="7days">最近7天</option>
+                                    <option value="30days" selected>最近30天</option>
+                                    <option value="90days">最近90天</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- 数据卡片 -->
+                        <div class="overview-cards">
+                            <div class="overview-card">
+                                <div class="card-icon">
+                                    <i class="fas fa-wallet"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-value">¥ 128,456.78</div>
+                                    <div class="card-label">资产总值</div>
+                                    <div class="card-change positive">+12.5%</div>
+                                </div>
+                            </div>
+                            <div class="overview-card">
+                                <div class="card-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-value">¥ 23,456.78</div>
+                                    <div class="card-label">本月收益</div>
+                                    <div class="card-change positive">+8.3%</div>
+                                </div>
+                            </div>
+                            <div class="overview-card">
+                                <div class="card-icon">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-value">156</div>
+                                    <div class="card-label">本月交易</div>
+                                    <div class="card-change negative">-3.2%</div>
+                                </div>
+                            </div>
+                            <div class="overview-card">
+                                <div class="card-icon">
+                                    <i class="fas fa-fire"></i>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-value">89</div>
+                                    <div class="card-label">收藏增长</div>
+                                    <div class="card-change positive">+15.7%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 收益详情 -->
+                        <div class="earnings-details">
+                            <h3>收益明细</h3>
+                            <div class="earnings-chart">
+                                <div class="chart-item">
+                                    <span class="chart-label">NFT 销售</span>
+                                    <span class="chart-value">¥ 12,345</span>
+                                    <div class="chart-bar" style="width: 60%"></div>
+                                </div>
+                                <div class="chart-item">
+                                    <span class="chart-label">质押收益</span>
+                                    <span class="chart-value">¥ 8,456</span>
+                                    <div class="chart-bar" style="width: 40%"></div>
+                                </div>
+                                <div class="chart-item">
+                                    <span class="chart-label">交易分红</span>
+                                    <span class="chart-value">¥ 2,655</span>
+                                    <div class="chart-bar" style="width: 15%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 最近活动 -->
+                        <div class="recent-activity">
+                            <h3>最近活动</h3>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon buy">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <div class="activity-title">购买了 NFT</div>
+                                        <div class="activity-desc">数字花园 #256 - ¥1,890</div>
+                                        <div class="activity-time">2小时前</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon sell">
+                                        <i class="fas fa-tag"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <div class="activity-title">出售了 NFT</div>
+                                        <div class="activity-desc">赛博朋克 #88 - ¥4,200</div>
+                                        <div class="activity-time">5小时前</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon favorite">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <div class="activity-title">收藏了 NFT</div>
+                                        <div class="activity-desc">星际旅行者 #1024</div>
+                                        <div class="activity-time">1天前</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon staking">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <div class="activity-title">质押收益到账</div>
+                                        <div class="activity-desc">星际旅行者池 - ¥123.45</div>
+                                        <div class="activity-time">2天前</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon offer">
+                                        <i class="fas fa-gavel"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <div class="activity-title">出价被接受</div>
+                                        <div class="activity-desc">抽象空间 #512 - ¥3,210</div>
+                                        <div class="activity-time">3天前</div>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon transfer">
+                                        <i class="fas fa-exchange-alt"></i>
+                                    </div>
+                                    <div class="activity-details">
+                                        <div class="activity-title">赠送 NFT</div>
+                                        <div class="activity-desc">神话生物 #333 - 给 @Friend</div>
+                                        <div class="activity-time">5天前</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-view-more">查看全部活动</button>
+                        </div>
+                    </div>
+
+                    <!-- 我的收藏 -->
+                    <div class="profile-section" id="section-collection">
+                        <div class="section-header">
+                            <h2>我的收藏</h2>
+                            <div class="tab-actions">
+                                <button class="btn-action-sm"><i class="fas fa-plus"></i> 创建合集</button>
+                            <select class="sort-select">
+                                <option value="recent">最新</option>
+                                <option value="name">名称</option>
+                                <option value="price">价格</option>
+                            </select>
+                            <div class="view-toggle">
+                                <button class="view-btn active" data-view="grid" title="网格视图">
+                                    <i class="fas fa-th-large"></i>
+                                </button>
+                                <button class="view-btn" data-view="list" title="列表视图">
+                                    <i class="fas fa-list"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="collection-grid">
+                            <div class="collection-item">
+                                <div class="collection-preview gradient-1"></div>
+                                <div class="collection-info">
+                                    <h4>星际系列</h4>
+                                    <p>12 个 NFT · 估值 ¥28,900</p>
+                                </div>
+                                <div class="collection-stats">
+                                    <span><i class="fas fa-eye"></i> 1,234</span>
+                                    <span><i class="fas fa-heart"></i> 456</span>
+                                </div>
+                                <button class="btn-action-sm">管理</button>
+                            </div>
+                            <div class="collection-item">
+                                <div class="collection-preview gradient-2"></div>
+                                <div class="collection-info">
+                                    <h4>赛博朋克</h4>
+                                    <p>8 个 NFT · 估值 ¥45,600</p>
+                                </div>
+                                <div class="collection-stats">
+                                    <span><i class="fas fa-eye"></i> 890</span>
+                                    <span><i class="fas fa-heart"></i> 321</span>
+                                </div>
+                                <button class="btn-action-sm">管理</button>
+                            </div>
+                            <div class="collection-item">
+                                <div class="collection-preview gradient-3"></div>
+                                <div class="collection-info">
+                                    <h4>自然风光</h4>
+                                    <p>15 个 NFT · 估值 ¥31,350</p>
+                                </div>
+                                <div class="collection-stats">
+                                    <span><i class="fas fa-eye"></i> 567</span>
+                                    <span><i class="fas fa-heart"></i> 234</span>
+                                </div>
+                                <button class="btn-action-sm">管理</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 收藏夹 -->
+                    <div class="profile-section" id="section-favorites">
+                        <div class="section-header">
+                            <h2>收藏夹</h2>
+                            <div class="tab-actions">
+                                <button class="btn-action-sm"><i class="fas fa-filter"></i> 筛选</button>
+                                <div class="view-toggle">
+                                    <button class="view-btn active" data-view="grid" title="网格视图">
+                                        <i class="fas fa-th-large"></i>
+                                    </button>
+                                    <button class="view-btn" data-view="list" title="列表视图">
+                                        <i class="fas fa-list"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="favorites-grid">
+                            <div class="nft-card">
+                                <div class="nft-image gradient-1"></div>
+                                <div class="nft-badge hot">热门</div>
+                                <button class="btn-remove-favorite"><i class="fas fa-times"></i></button>
+                                <div class="nft-info">
+                                    <div class="nft-title">星际旅行者 #1024</div>
+                                    <div class="nft-creator">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ArtMaster" alt="">
+                                        <span>ArtMaster</span>
+                                    </div>
+                                    <div class="nft-price">¥ 2,890</div>
+                                </div>
+                            </div>
+                            <div class="nft-card">
+                                <div class="nft-image gradient-2"></div>
+                                <button class="btn-remove-favorite"><i class="fas fa-times"></i></button>
+                                <div class="nft-info">
+                                    <div class="nft-title">赛博朋克 #88</div>
+                                    <div class="nft-creator">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=CyberArtist" alt="">
+                                        <span>CyberArtist</span>
+                                    </div>
+                                    <div class="nft-price">¥ 4,560</div>
+                                </div>
+                            </div>
+                            <div class="nft-card">
+                                <div class="nft-image gradient-3"></div>
+                                <div class="nft-badge rare">稀有</div>
+                                <button class="btn-remove-favorite"><i class="fas fa-times"></i></button>
+                                <div class="nft-info">
+                                    <div class="nft-title">数字花园 #256</div>
+                                    <div class="nft-creator">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=NatureLover" alt="">
+                                        <span>NatureLover</span>
+                                    </div>
+                                    <div class="nft-price">¥ 2,100</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 活动记录 -->
+                    <div class="profile-section" id="section-activity">
+                        <div class="section-header">
+                            <h2>活动记录</h2>
+                            <div class="tab-filters">
+                                <button class="filter-btn active" data-filter="all">全部</button>
+                                <button class="filter-btn" data-filter="buy">购买</button>
+                                <button class="filter-btn" data-filter="sell">出售</button>
+                                <button class="filter-btn" data-filter="transfer">转账</button>
+                                <button class="filter-btn" data-filter="stake">质押</button>
+                            </div>
+                            <div class="tab-actions">
+                                <input type="date" class="filter-input" placeholder="开始日期">
+                                <input type="date" class="filter-input" placeholder="结束日期">
+                                <button class="btn-action-sm"><i class="fas fa-download"></i> 导出</button>
+                            </div>
+                        </div>
+                        <div class="activity-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>类型</th>
+                                        <th>NFT</th>
+                                        <th>金额</th>
+                                        <th>时间</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="activity-type buy">购买</span></td>
+                                        <td>数字花园 #256</td>
+                                        <td class="amount">-¥ 1,890.00</td>
+                                        <td>2026-03-27 14:30</td>
+                                        <td><span class="status completed">已完成</span></td>
+                                        <td><button class="btn-action-sm">查看</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="activity-type sell">出售</span></td>
+                                        <td>赛博朋克 #88</td>
+                                        <td class="amount positive">+¥ 4,200.00</td>
+                                        <td>2026-03-26 15:20</td>
+                                        <td><span class="status completed">已完成</span></td>
+                                        <td><button class="btn-action-sm">查看</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="activity-type transfer">转账</span></td>
+                                        <td>星际旅行者 #1024</td>
+                                        <td class="amount">--</td>
+                                        <td>2026-03-25 09:45</td>
+                                        <td><span class="status completed">已完成</span></td>
+                                        <td><button class="btn-action-sm">查看</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="activity-type stake">质押</span></td>
+                                        <td>星际旅行者 #1024</td>
+                                        <td class="amount positive">+¥ 123.45</td>
+                                        <td>2026-03-25 00:00</td>
+                                        <td><span class="status completed">已完成</span></td>
+                                        <td><button class="btn-action-sm">查看</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="activity-type offer">出价</span></td>
+                                        <td>抽象空间 #512</td>
+                                        <td class="amount">--</td>
+                                        <td>2026-03-24 18:30</td>
+                                        <td><span class="status accepted">已接受</span></td>
+                                        <td><button class="btn-action-sm">查看</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="activity-type buy">购买</span></td>
+                                        <td>神话生物 #333</td>
+                                        <td class="amount">-¥ 2,890.00</td>
+                                        <td>2026-03-24 14:15</td>
+                                        <td><span class="status completed">已完成</span></td>
+                                        <td><button class="btn-action-sm">查看</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination">
+                            <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <span class="page-ellipsis">...</span>
+                            <button class="page-btn">99</button>
+                            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 出价管理 -->
+                    <div class="profile-section" id="section-offers">
+                        <div class="section-header">
+                            <h2>出价管理</h2>
+                            <div class="tab-actions">
+                                <select class="sort-select">
+                                    <option value="active">有效</option>
+                                    <option value="all">全部</option>
+                                    <option value="accepted">已接受</option>
+                                    <option value="rejected">已拒绝</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="offers-list">
+                            <div class="offer-item">
+                                <div class="offer-image gradient-1"></div>
+                                <div class="offer-details">
+                                    <div class="offer-title">星际旅行者 #1024</div>
+                                    <div class="offer-info">
+                                        <span class="offer-price">我的出价: ¥ 2,500</span>
+                                        <span class="offer-creator">最高出价: ¥ 2,450</span>
+                                    </div>
+                                    <div class="offer-status pending">待确认</div>
+                                    <div class="offer-time">剩余时间: 2天 5小时</div>
+                                </div>
+                                <div class="offer-actions">
+                                    <button class="btn-action-sm">提高出价</button>
+                                    <button class="btn-action-sm danger">取消出价</button>
+                                </div>
+                            </div>
+                            <div class="offer-item">
+                                <div class="offer-image gradient-2"></div>
+                                <div class="offer-details">
+                                    <div class="offer-title">赛博朋克 #88</div>
+                                    <div class="offer-info">
+                                        <span class="offer-price">我的出价: ¥ 4,000</span>
+                                        <span class="offer-creator">最高出价: ¥ 4,200</span>
+                                    </div>
+                                    <div class="offer-status rejected">已拒绝</div>
+                                    <div class="offer-time">出价已过期</div>
+                                </div>
+                                <div class="offer-actions">
+                                    <button class="btn-action-sm">重新出价</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 收益 -->
+                    <div class="profile-section" id="section-earnings">
+                        <div class="section-header">
+                            <h2>收益</h2>
+                            <div class="tab-actions">
+                                <select class="filter-select">
+                                    <option value="all">全部类型</option>
+                                    <option value="daily">每日收益</option>
+                                    <option value="bonus">奖金</option>
+                                    <option value="dividend">分红</option>
+                                </select>
+                                <button class="btn-action-sm"><i class="fas fa-download"></i> 导出</button>
+                            </div>
+                        </div>
+                        <div class="earnings-summary">
+                            <div class="summary-card">
+                                <div class="summary-icon">
+                                    <i class="fas fa-calendar-day"></i>
+                                </div>
+                                <div class="summary-content">
+                                    <div class="summary-title">今日收益</div>
+                                    <div class="summary-value positive">+¥ 234.56</div>
+                                </div>
+                            </div>
+                            <div class="summary-card">
+                                <div class="summary-icon">
+                                    <i class="fas fa-calendar-week"></i>
+                                </div>
+                                <div class="summary-content">
+                                    <div class="summary-title">本周收益</div>
+                                    <div class="summary-value positive">+¥ 1,234.56</div>
+                                </div>
+                            </div>
+                            <div class="summary-card">
+                                <div class="summary-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="summary-content">
+                                    <div class="summary-title">本月收益</div>
+                                    <div class="summary-value positive">+¥ 5,678.90</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="earnings-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>类型</th>
+                                        <th>来源</th>
+                                        <th>金额</th>
+                                        <th>状态</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2026-03-27 00:00</td>
+                                        <td><span class="earning-type daily">每日收益</span></td>
+                                        <td>星际旅行者池</td>
+                                        <td class="amount positive">+¥ 12.34</td>
+                                        <td><span class="status confirmed">已到账</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2026-03-26 00:00</td>
+                                        <td><span class="earning-type daily">每日收益</span></td>
+                                        <td>赛博朋克池</td>
+                                        <td class="amount positive">+¥ 9.87</td>
+                                        <td><span class="status confirmed">已到账</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2026-03-25 00:00</td>
+                                        <td><span class="earning-type daily">每日收益</span></td>
+                                        <td>自然风光池</td>
+                                        <td class="amount positive">+¥ 15.23</td>
+                                        <td><span class="status confirmed">已到账</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2026-03-20 12:00</td>
+                                        <td><span class="earning-type bonus">新用户奖励</span></td>
+                                        <td>星际旅行者池</td>
+                                        <td class="amount positive">+¥ 100.00</td>
+                                        <td><span class="status confirmed">已到账</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2026-03-15 00:00</td>
+                                        <td><span class="earning-type dividend">交易分红</span></td>
+                                        <td>平台分红</td>
+                                        <td class="amount positive">+¥ 50.00</td>
+                                        <td><span class="status confirmed">已到账</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination">
+                            <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <span class="page-ellipsis">...</span>
+                            <button class="page-btn">20</button>
+                            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 我的 NFT -->
+                    <div class="profile-section" id="section-nfts">
+                        <div class="section-header">
+                            <h2>我的 NFT</h2>
+                            <div class="tab-actions">
+                                <button class="btn-action-sm"><i class="fas fa-upload"></i> 上传</button>
+                                <select class="sort-select">
+                                    <option value="recent">最新</option>
+                                    <option value="price-high">价格高到低</option>
+                                    <option value="price-low">价格低到高</option>
+                                    <option value="name">名称</option>
+                                </select>
+                                <div class="view-toggle">
+                                    <button class="view-btn active" data-view="grid" title="网格视图">
+                                        <i class="fas fa-th-large"></i>
+                                    </button>
+                                    <button class="view-btn" data-view="list" title="列表视图">
+                                        <i class="fas fa-list"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nft-grid">
+                            <div class="nft-card">
+                                <div class="nft-image gradient-1"></div>
+                                <div class="nft-badge staking">质押中</div>
+                                <div class="nft-overlay">
+                                    <button class="btn-overlay">查看详情</button>
+                                </div>
+                                <div class="nft-info">
+                                    <div class="nft-title">星际旅行者 #1024</div>
+                                    <div class="nft-creator">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ArtMaster" alt="">
+                                        <span>ArtMaster</span>
+                                    </div>
+                                    <div class="nft-price">
+                                        <span class="price-label">当前价值</span>
+                                        <span class="price-value">¥ 2,890</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nft-card">
+                                <div class="nft-image gradient-2"></div>
+                                <div class="nft-overlay">
+                                    <button class="btn-overlay">查看详情</button>
+                                </div>
+                                <div class="nft-info">
+                                    <div class="nft-title">赛博朋克 #88</div>
+                                    <div class="nft-creator">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=CyberArtist" alt="">
+                                        <span>CyberArtist</span>
+                                    </div>
+                                    <div class="nft-price">
+                                        <span class="price-label">当前价值</span>
+                                        <span class="price-value">¥ 4,200</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nft-card">
+                                <div class="nft-image gradient-3"></div>
+                                <div class="nft-badge rare">稀有</div>
+                                <div class="nft-overlay">
+                                    <button class="btn-overlay">查看详情</button>
+                                </div>
+                                <div class="nft-info">
+                                    <div class="nft-title">数字花园 #256</div>
+                                    <div class="nft-creator">
+                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=NatureLover" alt="">
+                                        <span>NatureLover</span>
+                                    </div>
+                                    <div class="nft-price">
+                                        <span class="price-label">当前价值</span>
+                                        <span class="price-value">¥ 2,100</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination">
+                            <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <span class="page-ellipsis">...</span>
+                            <button class="page-btn">15</button>
+                            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 质押 -->
+                    <div class="profile-section" id="section-staking">
+                        <div class="section-header">
+                            <h2>质押</h2>
+                            <div class="tab-actions">
+                                <button class="btn-primary"><i class="fas fa-plus-circle"></i> 新增质押</button>
+                            </div>
+                        </div>
+                        <div class="staking-summary">
+                            <div class="summary-card">
+                                <div class="summary-icon">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="summary-content">
+                                    <div class="summary-title">质押中</div>
+                                    <div class="summary-value">56</div>
+                                </div>
+                            </div>
+                            <div class="summary-card">
+                                <div class="summary-icon">
+                                    <i class="fas fa-coins"></i>
+                                </div>
+                                <div class="summary-content">
+                                    <div class="summary-title">累计收益</div>
+                                    <div class="summary-value positive">¥ 12,345.67</div>
+                                </div>
+                            </div>
+                            <div class="summary-card">
+                                <div class="summary-icon">
+                                    <i class="fas fa-percentage"></i>
+                                </div>
+                                <div class="summary-content">
+                                    <div class="summary-title">平均 APY</div>
+                                    <div class="summary-value">15.5%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stake-items">
+                            <div class="stake-item">
+                                <div class="stake-image gradient-1"></div>
+                                <div class="stake-info">
+                                    <div class="stake-title">星际旅行者 #1024</div>
+                                    <div class="stake-series">星际旅行者系列</div>
+                                    <div class="stake-details">
+                                        <div class="detail-item">
+                                            <span class="label">质押时间</span>
+                                            <span class="value">2026-03-20</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="label">APY</span>
+                                            <span class="value positive">15.5%</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="label">累计收益</span>
+                                            <span class="value positive">¥ 6,789.12</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stake-actions">
+                                    <button class="btn-action-sm"><i class="fas fa-coins"></i> 收取收益</button>
+                                    <button class="btn-action-sm danger"><i class="fas fa-unlock"></i> 解除质押</button>
+                                </div>
+                            </div>
+                            <div class="stake-item">
+                                <div class="stake-image gradient-2"></div>
+                                <div class="stake-info">
+                                    <div class="stake-title">赛博朋克 #88</div>
+                                    <div class="stake-series">赛博朋克系列</div>
+                                    <div class="stake-details">
+                                        <div class="detail-item">
+                                            <span class="label">质押时间</span>
+                                            <span class="value">2026-03-15</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="label">APY</span>
+                                            <span class="value positive">12.8%</span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="label">累计收益</span>
+                                            <span class="value positive">¥ 3,456.78</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="stake-actions">
+                                    <button class="btn-action-sm"><i class="fas fa-coins"></i> 收取收益</button>
+                                    <button class="btn-action-sm danger"><i class="fas fa-unlock"></i> 解除质押</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 账户设置 -->
+                    <div class="profile-section" id="section-settings">
+                        <div class="section-header">
+                            <h2>账户设置</h2>
+                        </div>
+                        <div class="settings-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>用户名</label>
+                                    <input type="text" class="form-control" value="Robert" placeholder="请输入用户名">
+                                </div>
+                                <div class="form-group">
+                                    <label>邮箱</label>
+                                    <input type="email" class="form-control" value="rob***@gmail.com" placeholder="请输入邮箱">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>个人简介</label>
+                                <textarea class="form-control" rows="3" placeholder="请输入个人简介">NFT 爱好者 | 数字艺术收藏家 | 探索元宇宙</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>社交链接</label>
+                                <input type="text" class="form-control" placeholder="Twitter URL" value="https://twitter.com/robert">
+                                <input type="text" class="form-control" placeholder="Discord URL" value="https://discord.gg/robert">
+                            </div>
+                            <div class="form-actions">
+                                <button class="btn-secondary">取消</button>
+                                <button class="btn-primary">保存更改</button>
+                            </div>
+                        </div>
+                        <div class="settings-divider"></div>
+                        <div class="settings-section">
+                            <h3>偏好设置</h3>
+                            <div class="settings-list">
+                                <div class="setting-item">
+                                    <div class="setting-label">语言</div>
+                                    <select class="form-control-sm">
+                                        <option>简体中文</option>
+                                        <option>English</option>
+                                        <option>日本語</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-label">时区</div>
+                                    <select class="form-control-sm">
+                                        <option>(GMT+08:00) 北京时间</option>
+                                        <option>(GMT+00:00) 伦敦时间</option>
+                                        <option>(GMT-05:00) 纽约时间</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-label">货币</div>
+                                    <select class="form-control-sm">
+                                        <option>CNY (人民币)</option>
+                                        <option>USD (美元)</option>
+                                        <option>EUR (欧元)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="settings-divider"></div>
+                        <div class="settings-section">
+                            <h3>通知设置</h3>
+                            <div class="settings-list">
+                                <div class="setting-item toggle">
+                                    <div class="setting-info">
+                                        <div class="setting-label">邮件通知</div>
+                                        <div class="setting-desc">接收重要活动通知</div>
+                                    </div>
+                                    <div class="setting-toggle active">
+                                        <div class="toggle-switch"></div>
+                                    </div>
+                                </div>
+                                <div class="setting-item toggle">
+                                    <div class="setting-info">
+                                        <div class="setting-label">出价通知</div>
+                                        <div class="setting-desc">收到新出价时通知</div>
+                                    </div>
+                                    <div class="setting-toggle active">
+                                        <div class="toggle-switch"></div>
+                                    </div>
+                                </div>
+                                <div class="setting-item toggle">
+                                    <div class="setting-info">
+                                        <div class="setting-label">收益通知</div>
+                                        <div class="setting-desc">质押收益到账时通知</div>
+                                    </div>
+                                    <div class="setting-toggle active">
+                                        <div class="toggle-switch"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 安全设置 -->
+                    <div class="profile-section" id="section-security">
+                        <div class="section-header">
+                            <h2>安全设置</h2>
+                        </div>
+                        <div class="security-settings">
+                            <div class="security-item">
+                                <div class="security-icon">
+                                    <i class="fas fa-key"></i>
+                                </div>
+                                <div class="security-content">
+                                    <div class="security-title">修改密码</div>
+                                    <div class="security-desc">定期修改密码以保护账户安全</div>
+                                    <button class="btn-secondary">修改</button>
+                                </div>
+                            </div>
+                            <div class="security-item">
+                                <div class="security-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="security-content">
+                                    <div class="security-title">两步验证</div>
+                                    <div class="security-status">
+                                        <span class="status enabled"><i class="fas fa-check-circle"></i> 已启用</span>
+                                    </div>
+                                    <button class="btn-secondary">管理</button>
+                                </div>
+                            </div>
+                            <div class="security-item">
+                                <div class="security-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="security-content">
+                                    <div class="security-title">钱包连接管理</div>
+                                    <div class="security-desc">管理已连接的钱包地址</div>
+                                    <button class="btn-secondary">查看</button>
+                                </div>
+                            </div>
+                            <div class="security-item">
+                                <div class="security-icon">
+                                    <i class="fas fa-history"></i>
+                                </div>
+                                <div class="security-content">
+                                    <div class="security-title">登录记录</div>
+                                    <div class="security-desc">查看最近的登录活动</div>
+                                    <button class="btn-secondary">查看</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 通知设置 -->
+                    <div class="profile-section" id="section-notifications">
+                        <div class="section-header">
+                            <h2>通知设置</h2>
+                            <div class="tab-actions">
+                                <button class="btn-action-sm"><i class="fas fa-check-double"></i> 全部已读</button>
+                            </div>
+                        </div>
+                        <div class="notifications-settings">
+                            <div class="notification-category">
+                                <h3>系统通知</h3>
+                                <div class="notification-list">
+                                    <div class="notification-item">
+                                        <div class="notification-icon system">
+                                            <i class="fas fa-bell"></i>
+                                        </div>
+                                        <div class="notification-content">
+                                            <div class="notification-title">欢迎来到 NFTOwer-5</div>
+                                            <div class="notification-desc">感谢您注册 NFTOwer-5 平台</div>
+                                            <div class="notification-time">2026-03-01</div>
+                                        </div>
+                                        <button class="btn-action-sm"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 隐私设置 -->
+                    <div class="profile-section" id="section-privacy">
+                        <div class="section-header">
+                            <h2>隐私设置</h2>
+                        </div>
+                        <div class="privacy-settings">
+                            <div class="privacy-item">
+                                <div class="privacy-icon">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <div class="privacy-content">
+                                    <div class="privacy-title">资料可见性</div>
+                                    <div class="privacy-desc">控制谁可以看到您的个人资料</div>
+                                    <select class="form-control-sm">
+                                        <option>所有人可见</option>
+                                        <option>仅关注者可见</option>
+                                        <option>仅自己可见</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="privacy-item">
+                                <div class="privacy-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="privacy-content">
+                                    <div class="privacy-title">搜索引擎可见性</div>
+                                    <div class="privacy-desc">您的资料是否可以被搜索引擎索引</div>
+                                    <div class="privacy-toggle">
+                                        <div class="toggle-switch active"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="privacy-item">
+                                <div class="privacy-icon">
+                                    <i class="fas fa-share-alt"></i>
+                                </div>
+                                <div class="privacy-content">
+                                    <div class="privacy-title">收藏分享</div>
+                                    <div class="privacy-desc">他人是否可以看到您的收藏</div>
+                                    <div class="privacy-toggle">
+                                        <div class="toggle-switch active"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="privacy-item">
+                                <div class="privacy-icon">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <div class="privacy-content">
+                                    <div class="privacy-title">活动可见性</div>
+                                    <div class="privacy-desc">显示您的收藏和活动</div>
+                                    <div class="privacy-toggle">
+                                        <div class="toggle-switch active"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <div class="logo">NFTOwer-5</div>
+                    <p>探索无限可能，收藏独特价值</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>市场</h4>
+                <ul>
+                    <li><a href="#">浏览 NFT</a></li>
+                    <li><a href="#">创作者</a></li>
+                    <li><a href="#">收藏</a></li>
+                    <li><a href="#">活动</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>资源</h4>
+                <ul>
+                    <li><a href="#">帮助中心</a></li>
+                    <li><a href="#">API 文档</a></li>
+                    <li><a href="#">教程</a></li>
+                    <li><a href="#">博客</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>公司</h4>
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NFTOwer-5. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/profile.js"></script>
+</body>
+</html>

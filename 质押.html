@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>质押 - NFTOwer-5 平台</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/stake.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html"><div class="logo">NFTOwer-5</div></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">首页</a></li>
+                <li><a href="market.html" class="nav-link">市场</a></li>
+                <li><a href="assets.html" class="nav-link">资产中心</a></li>
+                <li><a href="stake.html" class="nav-link active">质押</a></li>
+                <li><a href="reserve.html" class="nav-link">预约</a></li>
+                <li><a href="help.html" class="nav-link">帮助中心</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-connect">rob***@gmail.com</button>
+                <div class="user-avatar">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="用户头像">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 质押主内容 -->
+    <main class="stake-main">
+        <!-- 质押统计 -->
+        <section class="stake-overview">
+            <div class="overview-container">
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-value">56</div>
+                        <div class="card-label">质押中 NFT</div>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-value">¥ 12,345.67</div>
+                        <div class="card-label">累计收益</div>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-value">¥ 456.78</div>
+                        <div class="card-label">日收益</div>
+                    </div>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-value">15.5%</div>
+                        <div class="card-label">平均 APY</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 质押内容 -->
+        <section class="stake-content">
+            <div class="stake-container">
+                <!-- 质押导航 -->
+                <div class="stake-nav">
+                    <button class="stake-nav-btn active" data-tab="my-stake">
+                        <i class="fas fa-layer-group"></i>
+                        我的质押
+                    </button>
+                    <button class="stake-nav-btn" data-tab="pools">
+                        <i class="fas fa-pool"></i>
+                        质押池
+                    </button>
+                    <button class="stake-nav-btn" data-tab="earnings">
+                        <i class="fas fa-coins"></i>
+                        收益记录
+                    </button>
+                    <button class="stake-nav-btn" data-tab="new-stake">
+                        <i class="fas fa-plus-circle"></i>
+                        新增质押
+                    </button>
+                </div>
+
+                <!-- 我的质押 -->
+                <div class="stake-tab active" id="tab-my-stake">
+                    <div class="tab-header">
+                        <h3>我的质押</h3>
+                        <div class="tab-actions">
+                            <button class="btn-primary">+ 新增质押</button>
+                        </div>
+                    </div>
+                    <div class="stake-list">
+                        <div class="stake-item">
+                            <div class="stake-image gradient-1"></div>
+                            <div class="stake-info">
+                                <div class="stake-title">星际旅行者 #1024</div>
+                                <div class="stake-series">星际旅行者系列</div>
+                                <div class="stake-details">
+                                    <div class="detail-item">
+                                        <span class="label">质押时间</span>
+                                        <span class="value">2026-03-20</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">APY</span>
+                                        <span class="value positive">15.5%</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">累计收益</span>
+                                        <span class="value positive">¥ 6,789.12</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stake-actions">
+                                <button class="btn-action-sm"><i class="fas fa-coins"></i> 收取收益</button>
+                                <button class="btn-action-sm danger"><i class="fas fa-unlock"></i> 解除质押</button>
+                            </div>
+                        </div>
+
+                        <div class="stake-item">
+                            <div class="stake-image gradient-2"></div>
+                            <div class="stake-info">
+                                <div class="stake-title">赛博朋克城 #88</div>
+                                <div class="stake-series">赛博朋克系列</div>
+                                <div class="stake-details">
+                                    <div class="detail-item">
+                                        <span class="label">质押时间</span>
+                                        <span class="value">2026-03-15</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">APY</span>
+                                        <span class="value positive">12.8%</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">累计收益</span>
+                                        <span class="value positive">¥ 3,456.78</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stake-actions">
+                                <button class="btn-action-sm"><i class="fas fa-coins"></i> 收取收益</button>
+                                <button class="btn-action-sm danger"><i class="fas fa-unlock"></i> 解除质押</button>
+                            </div>
+                        </div>
+
+                        <div class="stake-item">
+                            <div class="stake-image gradient-3"></div>
+                            <div class="stake-info">
+                                <div class="stake-title">数字花园 #256</div>
+                                <div class="stake-series">自然系列</div>
+                                <div class="stake-details">
+                                    <div class="detail-item">
+                                        <span class="label">质押时间</span>
+                                        <span class="value">2026-03-10</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">APY</span>
+                                        <span class="value positive">18.2%</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <span class="label">累计收益</span>
+                                        <span class="value positive">¥ 2,099.77</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stake-actions">
+                                <button class="btn-action-sm"><i class="fas fa-coins"></i> 收取收益</button>
+                                <button class="btn-action-sm danger"><i class="fas fa-unlock"></i> 解除质押</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 质押池 -->
+                <div class="stake-tab" id="tab-pools">
+                    <div class="tab-header">
+                        <h3>质押池</h3>
+                        <div class="tab-actions">
+                            <select class="sort-select">
+                                <option value="apy">按 APY 排序</option>
+                                <option value="total">按总量排序</option>
+                                <option value="users">按人数排序</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="pool-grid">
+                        <div class="pool-card">
+                            <div class="pool-header">
+                                <div class="pool-icon gradient-1"></div>
+                                <div class="pool-info">
+                                    <h4>星际旅行者池</h4>
+                                    <span class="pool-type">高收益</span>
+                                </div>
+                            </div>
+                            <div class="pool-stats">
+                                <div class="pool-stat">
+                                    <span class="label">APY</span>
+                                    <span class="value positive">15.5%</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="label">总质押</span>
+                                    <span class="value">1,234</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="label">参与人数</span>
+                                    <span class="value">567</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="label">锁定期</span>
+                                    <span class="value">30天</span>
+                                </div>
+                            </div>
+                            <div class="pool-actions">
+                                <button class="btn-primary">加入质押</button>
+                            </div>
+                        </div>
+
+                        <div class="pool-card">
+                            <div class="pool-header">
+                                <div class="pool-icon gradient-2"></div>
+                                <div class="pool-info">
+                                    <h4>赛博朋克池</h4>
+                                    <span class="pool-type">灵活</span>
+                                </div>
+                            </div>
+                            <div class="pool-stats">
+                                <div class="pool-stat">
+                                    <span class="label">APY</span>
+                                    <span class="value positive">12.8%</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="label">总质押</span>
+                                    <span class="value">856</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="label">参与人数</span>
+                                    <span class="value">432</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="label">锁定期</span>
+                                    <span class="value">90天</span>
+                                </div>
+                            </div>
+                            <div class="pool-actions">
+                                <button class="btn-primary">加入质押</button>
+                            </div>
+                        </div>
+
+                        <div class="pool-card">
+                            <div class="pool-header">
+                                <div class="pool-icon gradient-3"></div>
+                                <div class="pool-info">
+                                    <h4>自然风光池</h4>
+                                    <span class="pool-type">稳定</span>
+                                </div>
+                            </div>
+                            <div class="pool-stats">
+                                <div class="pool-stat">
+                                    <span class="label">APY</span>
+                                    <span class="value positive">18.2%</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="label">总质押</span>
+                                    <span class="value">678</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="label">参与人数</span>
+                                    <span class="value">321</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="label">锁定期</span>
+                                    <span class="value">180天</span>
+                                </div>
+                            </div>
+                            <div class="pool-actions">
+                                <button class="btn-primary">加入质押</button>
+                            </div>
+                        </div>
+
+                        <div class="pool-card">
+                            <div class="pool-header">
+                                <div class="pool-icon gradient-4"></div>
+                                <div class="pool-info">
+                                    <h4>抽象艺术池</h4>
+                                    <span class="pool-type">高风险高收益</span>
+                                </div>
+                            </div>
+                            <div class="pool-stats">
+                                <div class="pool-stat">
+                                    <span class="label">APY</span>
+                                    <span class="value positive">22.5%</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="label">总质押</span>
+                                    <span class="value">445</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="label">参与人数</span>
+                                    <span class="value">234</span>
+                                </div>
+                                <div class="pool-stat">
+                                    <span class="label">锁定期</span>
+                                    <span class="value">60天</span>
+                                </div>
+                            </div>
+                            <div class="pool-actions">
+                                <button class="btn-primary">加入质押</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 收益记录 -->
+                <div class="stake-tab" id="tab-earnings">
+                    <div class="tab-header">
+                        <h3>收益记录</h3>
+                        <div class="tab-actions">
+                            <select class="filter-select">
+                                <option value="all">全部类型</option>
+                                <option value="daily">每日收益</option>
+                                <option value="bonus">奖金</option>
+                            </select>
+                            <button class="btn-action-sm"><i class="fas fa-download"></i> 导出</button>
+                        </div>
+                    </div>
+                    <div class="earnings-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>时间</th>
+                                    <th>质押池</th>
+                                    <th>NFT</th>
+                                    <th>类型</th>
+                                    <th>金额</th>
+                                    <th>状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2026-03-27 00:00</td>
+                                    <td>星际旅行者池</td>
+                                    <td>星际旅行者 #1024</td>
+                                    <td><span class="earning-type daily">每日收益</span></td>
+                                    <td class="amount positive">+¥ 12.34</td>
+                                    <td><span class="status confirmed">已到账</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2026-03-26 00:00</td>
+                                    <td>赛博朋克池</td>
+                                    <td>赛博朋克城 #88</td>
+                                    <td><span class="earning-type daily">每日收益</span></td>
+                                    <td class="amount positive">+¥ 9.87</td>
+                                    <td><span class="status confirmed">已到账</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2026-03-25 00:00</td>
+                                    <td>自然风光池</td>
+                                    <td>数字花园 #256</td>
+                                    <td><span class="earning-type daily">每日收益</span></td>
+                                    <td class="amount positive">+¥ 15.23</td>
+                                    <td><span class="status confirmed">已到账</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2026-03-20 12:00</td>
+                                    <td>星际旅行者池</td>
+                                    <td>星际旅行者 #1024</td>
+                                    <td><span class="earning-type bonus">新用户奖励</span></td>
+                                    <td class="amount positive">+¥ 100.00</td>
+                                    <td><span class="status confirmed">已到账</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 新增质押 -->
+                <div class="stake-tab" id="tab-new-stake">
+                    <div class="tab-header">
+                        <h3>新增质押</h3>
+                    </div>
+                    <div class="stake-form">
+                        <form id="newStakeForm">
+                            <div class="form-group">
+                                <label>选择质押池</label>
+                                <select class="form-control" required>
+                                    <option value="">请选择质押池</option>
+                                    <option value="interstellar">星际旅行者池 (15.5% APY)</option>
+                                    <option value="cyberpunk">赛博朋克池 (12.8% APY)</option>
+                                    <option value="nature">自然风光池 (18.2% APY)</option>
+                                    <option value="abstract">抽象艺术池 (22.5% APY)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>选择 NFT</label>
+                                <div class="nft-selector">
+                                    <div class="selected-nft" id="selectedNft">
+                                        <div class="placeholder">
+                                            <i class="fas fa-plus"></i>
+                                            <span>选择要质押的 NFT</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="help-text">仅支持已认证系列 NFT 质押</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>质押期限</label>
+                                <div class="period-options">
+                                    <label class="radio-label">
+                                        <input type="radio" name="period" value="30" checked>
+                                        <span class="radio-mark"></span>
+                                        <span class="period-info">
+                                            <span class="period">30天</span>
+                                            <span class="apy">15.5% APY</span>
+                                        </span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="period" value="90">
+                                        <span class="radio-mark"></span>
+                                        <span class="period-info">
+                                            <span class="period">90天</span>
+                                            <span class="apy">18.2% APY</span>
+                                        </span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="period" value="180">
+                                        <span class="radio-mark"></span>
+                                        <span class="period-info">
+                                            <span class="period">180天</span>
+                                            <span class="apy">22.5% APY</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>预估收益</label>
+                                <div class="estimated-earnings">
+                                    <div class="earning-item">
+                                        <span class="label">30天后</span>
+                                        <span class="value positive">~ ¥ 45.67</span>
+                                    </div>
+                                    <div class="earning-item">
+                                        <span class="label">90天后</span>
+                                        <span class="value positive">~ ¥ 156.89</span>
+                                    </div>
+                                    <div class="earning-item">
+                                        <span class="label">180天后</span>
+                                        <span class="value positive">~ ¥ 334.56</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>注意事项</label>
+                                <div class="notice-box">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <ul>
+                                        <li>质押期间 NFT 无法交易或转让</li>
+                                        <li>提前解除质押将损失部分收益</li>
+                                        <li>收益每日自动结算到账户</li>
+                                        <li>不同期限对应不同 APY</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary">取消</button>
+                                <button type="submit" class="btn-primary">确认质押</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <div class="logo">NFTOwer-5</div>
+                    <p>探索无限可能，收藏独特价值</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>市场</h4>
+                <ul>
+                    <li><a href="#">浏览 NFT</a></li>
+                    <li><a href="#">创作者</a></li>
+                    <li><a href="#">收藏</a></li>
+                    <li><a href="#">活动</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>资源</h4>
+                <ul>
+                    <li><a href="#">帮助中心</a></li>
+                    <li><a href="#">API 文档</a></li>
+                    <li><a href="#">教程</a></li>
+                    <li><a href="#">博客</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>公司</h4>
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NFTOwer-5. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/stake.js"></script>
+</body>
+</html>
