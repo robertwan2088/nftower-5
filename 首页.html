@@ -8,6 +8,58 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- 自定义样式 -->
+    <style>
+        /* 修复Banner图显示 */
+        .hero-section .slide-image {
+            display: block !important;
+        }
+
+        .hero-section .nft-showcase {
+            display: block !important;
+            visibility: visible !important;
+        }
+
+        .hero-section .floating-card {
+            display: block !important;
+        }
+
+        /* 修复用户评价图标尺寸 */
+        .testimonials-grid .testimonial-user img {
+            width: 40px !important;
+            height: 40px !important;
+        }
+
+        .testimonials-grid .testimonial-user .user-name {
+            font-size: 14px !important;
+        }
+
+        .testimonials-grid .testimonial-user .user-title {
+            font-size: 12px !important;
+        }
+
+        /* 确保合作伙伴布局正常 */
+        .partners-grid {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)) !important;
+            gap: 20px !important;
+            justify-content: center !important;
+            flex-wrap: wrap !important;
+        }
+
+        .partner-logo {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-direction: column !important;
+            font-size: 14px !important;
+        }
+
+        .partner-logo i {
+            font-size: 32px !important;
+            margin-bottom: 8px !important;
+        }
+    </style>
     <!-- 顶部导航 -->
     <nav class="navbar">
         <div class="nav-container">
@@ -327,10 +379,10 @@
                     <p>"NFTOwer-5 是我使用过的最好的NFT交易平台！界面简洁，交易快速，体验非常棒！"</p>
                 </div>
                 <div class="testimonial-user">
-                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=user1" alt="用户">
-                    <div>
-                        <div class="user-name">Alice Chen</div>
-                        <div class="user-title">资深收藏家</div>
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=user1" alt="用户" style="width: 40px; height: 40px;">
+                    <div style="margin-left: 10px;">
+                        <div class="user-name" style="font-size: 14px;">Alice Chen</div>
+                        <div class="user-title" style="font-size: 12px;">资深收藏家</div>
                     </div>
                 </div>
             </div>
@@ -340,10 +392,10 @@
                     <p>"在这里找到了很多珍贵的NFT藏品，平台的推荐算法非常精准，每次都有惊喜！"</p>
                 </div>
                 <div class="testimonial-user">
-                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=user2" alt="用户">
-                    <div>
-                        <div class="user-name">Bob Wang</div>
-                        <div class="user-title">NFT投资者</div>
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=user2" alt="用户" style="width: 40px; height: 40px;">
+                    <div style="margin-left: 10px;">
+                        <div class="user-name" style="font-size: 14px;">Bob Wang</div>
+                        <div class="user-title" style="font-size: 12px;">NFT投资者</div>
                     </div>
                 </div>
             </div>
@@ -353,10 +405,10 @@
                     <p>"作为创作者，NFTOwer-5 给了我很多支持，社区氛围也很好，强烈推荐！"</p>
                 </div>
                 <div class="testimonial-user">
-                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=user3" alt="用户">
-                    <div>
-                        <div class="user-name">Charlie Li</div>
-                        <div class="user-title">数字艺术家</div>
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=user3" alt="用户" style="width: 40px; height: 40px;">
+                    <div style="margin-left: 10px;">
+                        <div class="user-name" style="font-size: 14px;">Charlie Li</div>
+                        <div class="user-title" style="font-size: 12px;">数字艺术家</div>
                     </div>
                 </div>
             </div>
