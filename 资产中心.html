@@ -18,12 +18,13 @@
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">首页</a></li>
                 <li><a href="market.html" class="nav-link">市场</a></li>
-                <li><a href="assets.html" class="nav-link active">资产中心</a></li>
-                <li><a href="stake.html" class="nav-link">质押</a></li>
                 <li><a href="reserve.html" class="nav-link">预约</a></li>
+                <li><a href="stake.html" class="nav-link">质押</a></li>
+                <li><a href="#" class="nav-link">活动中心</a></li>
                 <li><a href="help.html" class="nav-link">帮助中心</a></li>
             </ul>
             <div class="nav-actions">
+                <a href="assets.html" class="nav-link">资产中心</a>
                 <button class="btn-connect">rob***@gmail.com</button>
                 <div class="user-avatar">
                     <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="用户头像">
@@ -41,7 +42,7 @@
                     <h2>欢迎回来，Felix!</h2>
                     <p>您的资产总价值</p>
                     <div class="total-value">
-                        <span class="value">¥ 128,456.78</span>
+                        <span class="value">128,456.78 USDT</span>
                         <span class="change positive">+12.5% <i class="fas fa-arrow-up"></i></span>
                     </div>
                 </div>
@@ -49,15 +50,24 @@
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-icon nft">
-                            <i class="fas fa-cube"></i>
+                            <i class="fas fa-wallet"></i>
                         </div>
                         <div class="stat-info">
-                            <div class="stat-value">234</div>
-                            <div class="stat-label">NFT 藏品</div>
+                            <div class="stat-value">45,678.90</div>
+                            <div class="stat-label">可用 (USDT)</div>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon staking">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">23,456.78</div>
+                            <div class="stat-label">待释放 (USDT)</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon earnings">
                             <i class="fas fa-lock"></i>
                         </div>
                         <div class="stat-info">
@@ -66,21 +76,12 @@
                         </div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon earnings">
+                        <div class="stat-icon transactions">
                             <i class="fas fa-coins"></i>
                         </div>
                         <div class="stat-info">
-                            <div class="stat-value">¥ 23,456.78</div>
-                            <div class="stat-label">总收益</div>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon transactions">
-                            <i class="fas fa-exchange-alt"></i>
-                        </div>
-                        <div class="stat-info">
-                            <div class="stat-value">1,234</div>
-                            <div class="stat-label">交易次数</div>
+                            <div class="stat-value">12,345.67</div>
+                            <div class="stat-label">总收益 (USDT)</div>
                         </div>
                     </div>
                 </div>
@@ -93,12 +94,12 @@
                 <!-- 资产导航 -->
                 <div class="assets-nav">
                     <button class="assets-nav-btn active" data-tab="my-assets">
+                        <i class="fas fa-coins"></i>
+                        币种列表
+                    </button>
+                    <button class="assets-nav-btn" data-tab="nft-assets">
                         <i class="fas fa-cube"></i>
                         我的 NFT
-                    </button>
-                    <button class="assets-nav-btn" data-tab="staking">
-                        <i class="fas fa-lock"></i>
-                        质押
                     </button>
                     <button class="assets-nav-btn" data-tab="earnings">
                         <i class="fas fa-coins"></i>
